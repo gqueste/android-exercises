@@ -1,5 +1,6 @@
 package fr.android.androidexercises;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -15,17 +16,20 @@ public class BookActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book);
 
-        TextView messageTextView = (TextView) findViewById(R.id.messageTextView);
+        final TextView messageTextView = (TextView) findViewById(R.id.messageTextView);
         messageTextView.setText(bookName);
 
         Button sendNameButton = (Button) findViewById(R.id.sendNameButton);
         sendNameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO set result to book name in intent
+                // set result to book name in intent
+                Intent intent = new Intent(BookActivity.this, LibraryActivity.class);
+                intent.putExtra("book_name", messageTextView.getText());
+                setResult(RESULT_OK, intent);
 
-                // TODO finish current activity
-
+                // finish current activity
+                finish();
             }
         });
     }
