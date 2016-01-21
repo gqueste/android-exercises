@@ -33,8 +33,8 @@ public class LibraryActivity extends AppCompatActivity {
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
 
-        //  restore check box
-        checkBox.setChecked(savedInstanceState.getBoolean("checkbox"));
+        //  restore check box and add a default
+        checkBox.setChecked(savedInstanceState.getBoolean("checkbox", false));
     }
 
     @Override
