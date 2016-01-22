@@ -20,6 +20,7 @@ public class LibraryActivity extends AppCompatActivity implements Step0Fragment.
         // replace Step1Fragment in containerFrameLayout
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.containerFrameLayout, new Step1Fragment(), Step1Fragment.class.getSimpleName())
+                .addToBackStack("kikoo")
                 .commit();
     }
 
