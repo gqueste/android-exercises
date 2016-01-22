@@ -1,5 +1,7 @@
 package fr.android.androidexercises;
 
+import android.content.Intent;
+
 import junit.framework.TestCase;
 
 import org.assertj.android.api.Assertions;
@@ -7,6 +9,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
+import org.robolectric.shadows.ShadowHandler;
+import org.robolectric.shadows.ShadowToast;
+
+import static org.hamcrest.core.IsEqual.equalTo;
 
 /**
  * Created by Darknight on 22/01/2016.
@@ -36,5 +42,12 @@ public class LoginActivityTest {
 
         Assertions.assertThat(activity.loginLayout).isVisible();
         Assertions.assertThat(activity.loggedText).isGone();
+    }
+
+    @Test
+    public void testMessage() throws Exception {
+        activity.message(R.string.action_login);
+        String textToast =ShadowToast.getTextOfLatestToast();
+        org.assertj.core.api.Assertions.assertThat(textToast).isEqualTo("log me in");
     }
 }
