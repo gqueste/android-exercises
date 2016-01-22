@@ -23,4 +23,12 @@ public class LoginPresenterTest{
         Mockito.verify(activity).logged();
         Mockito.verify(activity).message(R.string.text_logged);
     }
+
+    @Test
+    public void testCheckCredentialsCoucou() throws Exception {
+        loginPresenter.checkCredentials("p");
+        // Then
+        Mockito.verify(activity).notLogged();
+        Mockito.verify(activity).message(R.string.notLogged);
+    }
 }
